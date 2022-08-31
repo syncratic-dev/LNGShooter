@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 
-enum class EGASAbilityInputID : uint8
+UENUM()
+enum class AbilityInputID : uint8
 {
-	None,
-	Confirm,
-	Cancel,
-	Chop
+	None UMETA(DisplayName = "None"),
+	Confirm UMETA(DisplayName = "Confirm"),
+	Cancel UMETA(DisplayName = "Cancel"),
+	Chop UMETA(DisplayName = "Chop")
 };
