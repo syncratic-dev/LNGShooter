@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
+#include "AbilitySystemComponent.h"
+
 #include "PlayerAttributeSet.generated.h"
 
 // Uses macros from AttributeSet.h. makes getters/setters for these. 
