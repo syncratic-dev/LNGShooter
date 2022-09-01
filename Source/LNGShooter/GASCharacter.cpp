@@ -72,6 +72,9 @@ AGASCharacter::AGASCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	AbilitySystemComponent = CreateDefaultSubobject<UPlayerAbilitySystemComponent>("AbilitySystemComp");
+
+	if (!AbilitySystemComponent) return; 
+
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
@@ -100,7 +103,7 @@ void AGASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 	if (AbilitySystemComponent && InputComponent)
 	{
-		const FGameplayAbilityInputBinds Binds("Confirm", "Cancel", "EGASAbilityInputID", (int32)AbilityInputID::Confirm, (int32)AbilityInputID::Cancel);
+		const FGameplayAbilityInputBinds Binds("Confirm", "Cancel", "AbilityInputID", (uint32)AbilityInputID::Confirm, (uint32)AbilityInputID::Cancel);
 		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
 	}
 }
