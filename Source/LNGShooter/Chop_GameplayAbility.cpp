@@ -3,3 +3,7 @@
 
 #include "Chop_GameplayAbility.h"
 
+UChop_GameplayAbility::UChop_GameplayAbility()
+{
+
+}
