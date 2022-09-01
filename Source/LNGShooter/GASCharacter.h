@@ -29,9 +29,15 @@ private:
 	
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+	class UInventoryComponent* Inventory; 
+
 	// Sets default values for this character's properties
 	virtual void InitializeAttributes();
 	virtual void GiveAbilities();
+
+	UFUNCTION(BlueprintCallable, Category = "Items")
+	void UseItem(class UItemBase* Item);
 
 	virtual void PossessedBy(AController* newController) override; 
 	virtual void OnRep_PlayerState() override; 

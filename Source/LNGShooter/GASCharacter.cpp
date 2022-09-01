@@ -2,11 +2,8 @@
 
 
 #include "GASCharacter.h"
-
-#include "PlayerAbilitySystemComponent.h"
-#include "PlayerAttributeSet.h"
-#include "Chop_GameplayAbility.h"
-#include <GameplayEffectTypes.h>
+#include "ItemBase.h"
+#include "InventoryComponent.h"
 
 
 void AGASCharacter::InitializeAttributes()
@@ -40,6 +37,14 @@ void AGASCharacter::GiveAbilities()
 		}
 	}
 }
+
+void AGASCharacter::UseItem(UItemBase* Item)
+{
+	if (!Item) return;
+
+	Item->OnUse(this);
+}
+
 
 void AGASCharacter::PossessedBy(AController* newController)
 {
@@ -80,6 +85,8 @@ AGASCharacter::AGASCharacter()
 
 	Attributes = CreateDefaultSubobject<UPlayerAttributeSet>("Attributes");
 
+	Inventory = CreateDefaultSubobject<UInventoryComponent>("Inventory");
+	Inventory->Capacity = 20; 
 }
 
 // Called when the game starts or when spawned
